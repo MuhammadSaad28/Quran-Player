@@ -21,3 +21,14 @@ export const fetchChapters = async () => {
     return [];
   }
 };
+
+// Function to fetch Quran data
+export const fetchQuranData = async () => {
+  try {
+    const response = await axios.get('https://raw.githubusercontent.com/risan/quran-json/main/dist/quran.json');
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching Quran data:', error);
+    return [];
+  }
+};

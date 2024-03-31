@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import Spinner from '../components/Spinner';
+import { fetchQuranData } from '../api';
 
 const QuranReader = () => {
   const [quranData, setQuranData] = useState([]);
   const [selectedChapter, setSelectedChapter] = useState(null);
-  const [fontSize, setFontSize] = useState(16); // Initial font size
+  const [fontSize, setFontSize] = useState(16); 
 
   useEffect(() => {
-    const fetchQuranData = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get('https://raw.githubusercontent.com/risan/quran-json/main/dist/quran.json');
-        setQuranData(response.data);
+        const data = await fetchQuranData();
+        setQuranData(data);
       } catch (error) {
         console.error('Error fetching Quran data:', error);
       }
     };
 
-    fetchQuranData();
+    fetchData();
   }, []);
 
   const handleChapterClick = (chapter) => {
@@ -35,7 +35,7 @@ const QuranReader = () => {
   };
 
   return (
-    <div className="container-fluid text-right" style={{ maxwidth:'100vw !important'}}>
+    <div className="container-fluid text-right" style={{ maxWidth: '100vw' }}>
       <div className="d-flex justify-content-between mb-3 mt-1">
         <button className="btn me-2" style={{ backgroundColor: '#5c6ac4', color: '#fff' }} onClick={increaseFontSize}>Increase Font Size</button>
         <button className="btn" style={{ backgroundColor: '#5c6ac4', color: '#fff' }} onClick={decreaseFontSize}>Decrease Font Size</button>
@@ -63,7 +63,7 @@ const QuranReader = () => {
         <div className="col-lg-4">
           <h1 className='text-center'>السورة</h1>
           <ul className="list-unstyled" style={{ maxHeight: '60vh', overflowY: 'auto', paddingRight: '15px', direction: 'rtl', fontSize: `${fontSize}px` }}>
-            {quranData ? quranData.map((chapter) => (
+            {quranData && quranData.length > 0 ? quranData.map((chapter) => (
               <li key={chapter.id} onClick={() => handleChapterClick(chapter)} style={{ cursor: 'pointer', color: selectedChapter && selectedChapter.id === chapter.id ? 'red' : 'inherit' }}>
                 <p>{chapter.id}) {chapter.name}</p>
               </li>
