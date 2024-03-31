@@ -13,17 +13,25 @@
         overflow-x: hidden !important;
     }
   }
+  @media (max-width: 980px){
+    .recites{
+      max-height: 370px !important;
+    }
+  }
   
   @media (max-width: 420px) {
     .header-title {
       font-size: 1.5rem; /* Adjust font size as needed */
     }
     .main-cont{
-        width: 113vw !important;
+        width: 100vw !important;
         overflow-x: hidden !important;
     }
     .inf{
         width: 100vw !important;
+    }
+    .recites{
+      max-height: 370px !important;
     }
   }
   

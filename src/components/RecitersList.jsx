@@ -46,7 +46,7 @@ const RecitersList = ({ darkMode, reciters, selectedReciter, onSelectReciter, fo
         />
       </h2>
       {reciters ? (
-        <ul className="list-unstyled" style={{ overflowY: 'auto', maxHeight: '370px' }}>
+        <ul className="list-unstyled recites" style={{ overflowY: 'auto', maxHeight: '70vh' }}>
           {filteredReciters.map((reciter) => (
             <li
               key={reciter.id}

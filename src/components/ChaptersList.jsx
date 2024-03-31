@@ -44,7 +44,7 @@ const ChaptersList = ({ chapters, onSelectChapter, selectedChapter, darkMode, fo
           style={{ width: '50%' , height: '30px', fontSize: '14px', borderRadius: '5px', marginTop: '5px'}}
         />
       </h2>
-      <ul className="list-unstyled" style={{ overflowY: 'auto', maxHeight: '370px' }}>
+      <ul className="list-unstyled recites" style={{ overflowY: 'auto', maxHeight: '70vh' }}>
         {filteredChapters.map((chapter) => (
           <li
             key={chapter.id}

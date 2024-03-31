@@ -22,7 +22,7 @@ function App() {
 
   return (
     <Router>
-      <div className='container-fluid main-cont' style={{ backgroundColor: darkMode ? '#222' : '#eae3f7', color: darkMode ? '#fff' : '#333', minHeight: '100vh' , width:'100vw'}}>
+      <div className='main-cont' style={{ backgroundColor: darkMode ? '#222' : '#eae3f7', color: darkMode ? '#fff' : '#333', minHeight: '100vh' , width:'100vw'}}>
         <Header title="QURAN PLAYER" darkMode={darkMode} onToggleDarkMode={toggleDarkMode} />
         <div className="row">
           <div className="col-12">
