@@ -1,24 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomeScreen from './screens/HomeScreen';
+import NotFoundScreen from './screens/NotFoundScreen';
+import BookMarkedScreen from './screens/BookMarkedScreen';
+import Header from './components/Header';
+import QuranReader from './screens/QuranReader';
 
 function App() {
+  const [darkMode, setDarkMode] = useState(true);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    localStorage.setItem('darkMode', JSON.stringify(!darkMode));
+  };
+
+  useEffect(() => {
+    const darkModeData = JSON.parse(localStorage.getItem('darkMode'));
+    setDarkMode(darkModeData);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className='container-fluid main-cont' style={{ backgroundColor: darkMode ? '#222' : '#eae3f7', color: darkMode ? '#fff' : '#333', minHeight: '100vh' , width:'100vw'}}>
+        <Header title="QURAN PLAYER" darkMode={darkMode} onToggleDarkMode={toggleDarkMode} />
+        <div className="row">
+          <div className="col-12">
+            <Routes>
+              <Route exact path="/" element={<HomeScreen darkMode={darkMode} />} />
+              <Route exact path="/bookmarks" element={<BookMarkedScreen darkMode={darkMode} />} />
+              <Route exact path="/read" element={<QuranReader />} />
+              <Route path="*" element={<NotFoundScreen />} />
+            </Routes>
+          </div>
+        </div>
+      </div>
+    </Router>
   );
 }
 
