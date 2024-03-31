@@ -8,7 +8,7 @@ import Header from './components/Header';
 import QuranReader from './screens/QuranReader';
 
 function App() {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
