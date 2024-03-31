@@ -28,7 +28,9 @@
         overflow-x: hidden !important;
     }
     .inf{
-        width: 100vw !important;
+        width: 80vw !important;
+        height: 20vh !important;
+        overflow-x: hidden !important;
     }
     .recites{
       max-height: 370px !important;
